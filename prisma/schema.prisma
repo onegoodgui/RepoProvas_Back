@@ -27,19 +27,7 @@ model sessions {
 model terms{
   id Int @id @default(autoincrement())
   number Int @unique
-  discipline disciplines?
-}
-
-model categories{
-  id Int @id @default(autoincrement())
-  name String @unique
-  teachersDisciplines tests[]
-}
-
-model teachers{
-  id Int @id @default(autoincrement())
-  name String @unique
-  discipline teachersDisciplines[]
+  discipline disciplines[]
 }
 
 model disciplines{
@@ -47,8 +35,22 @@ model disciplines{
   name String @unique
   term terms @relation(fields: [termId], references: [id])
   termId Int
-  teachers teachersDisciplines[]
+  teachersDisciplines teachersDisciplines[]
 }
+
+model categories{
+  id Int @id @default(autoincrement())
+  name String @unique
+  tests tests[]
+}
+
+model teachers{
+  id Int @id @default(autoincrement())
+  name String @unique
+  teachersDisciplines teachersDisciplines[]
+}
+
+
 
 model teachersDisciplines{
   id Int @id @default(autoincrement())
@@ -56,7 +58,7 @@ model teachersDisciplines{
   disciplineId Int
   teacher teachers @relation(fields: [teacherId], references: [id])
   teacherId Int
-  categories tests[]
+  tests tests[]
 
 }
 
