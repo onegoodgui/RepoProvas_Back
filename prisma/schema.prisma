@@ -66,6 +66,7 @@ model tests{
  id Int @id @default(autoincrement())
  name String
  pdfUrl String
+ views Int @default(0)
  category categories @relation(fields: [categoryId], references: [id])
  categoryId Int
  teacherDiscipline teachersDisciplines @relation(fields: [teacherDisciplineId], references: [id])

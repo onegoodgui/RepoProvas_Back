@@ -12,7 +12,4 @@ app.use(router);
 
 app.use(handleErrorsMiddleware)
 
-const PORT = process.env.PORT;
-app.listen(PORT, () => {
-  console.log("Running on " + PORT);
-});
+export default app;

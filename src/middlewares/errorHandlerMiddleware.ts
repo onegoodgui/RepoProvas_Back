@@ -24,8 +24,8 @@ const serviceErrorToStatusCode = {
     return {type: 'notFound', message: customMessage ? customMessage : 'Not found'}
   }
 
-  function unprocessableEntityError(){
-    return {type: 'unprocessableEntity', message:'Unprocessable Entity'}
+  function unprocessableEntityError(customMessage?: string){
+    return {type: 'unprocessableEntity', message: customMessage ? customMessage : 'Unprocessable Entity'}
   }
 
   export default function handleErrorsMiddleware(err:ErrorType, req:Request, res:Response, next:NextFunction) {
