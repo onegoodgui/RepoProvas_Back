@@ -125,7 +125,12 @@ export async function filterByTeacher(search:string){
                                             views: true,
                                             teacherDiscipline:{
                                                 select:{
-                                                    teacherId: true
+                                                    teacherId: true,
+                                                    discipline:{
+                                                        select:{
+                                                            name:true,
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }
