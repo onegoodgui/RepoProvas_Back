@@ -102,6 +102,7 @@ export async function filterByTeacher(search:string){
                     id:true,
                     teacherId: true,
                     discipline:true,
+                    
                     tests:{
                         orderBy:{
                             category:{
@@ -112,16 +113,34 @@ export async function filterByTeacher(search:string){
                             category:{
                                 
                                 select:{
-                                    name:true
+                                    name:true,
+                                    id: true,
+                                    tests:{
+                                        orderBy:{
+                                            name:'asc'
+                                        },
+                                        select:{
+                                            name: true,
+                                            id: true,
+                                            views: true,
+                                            teacherDiscipline:{
+                                                select:{
+                                                    teacherId: true
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
                                 }
-                                
+                            
                             }
                         }
                     }
                     
                 }
             }
-        }
+        },
+
     })
     return teachersArray
 }
